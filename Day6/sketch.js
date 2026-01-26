@@ -64,6 +64,3 @@ function vert(i, count) {
   return map(i, 0, count - 1, height * 0.2, height * 0.8);
 }
 
-function drawIllusion(y, size, i, t) {
-  
-}
