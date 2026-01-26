@@ -1,49 +1,61 @@
-function setup(){
-  createCanvas(360, 480);
+function setup() {
+  createCanvas(540, 960);
+  pixelDensity(2);
+  noStroke();
 }
 
-function draw(){
-	background(0);
-	
-	let size = 50;
-	
-	let base = map(mouseX, 0, width, 10, 200);
-	let pulse = sin(frameCount * 0.03) * 70;
-	size = base + pulse;
-	
-	//Thanks
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	fill(180,120,255);
-	circle(width/4, height/4,size *3);
+function draw() {
+  background(0,40);
 
-	fill(180,120,255);
-	circle((width/4)*3, (height/4)*3, size * 3);
+  let s = sizeValue();
+  let count = 5;
+  let t = frameCount * 0.03;
 
-	fill(180, 120, 255);
-	circle(width/2, height/2, size * 2);
-	
-	fill(100,255,150);
-	circle(width/2, height/2, size);
-	
-	
-	//Make it Breath
-	
-	
-}	
+  for (let i = 0; i < count; i++) {
+    let y = vert(i, count);
+    drawCircle(y, s, i, t);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// calculate vertical position
+function vert(i, count) {
+  return map(i, 0, count - 1, height * 0.2, height * 0.8);
+}
+
+// shared breathing size
+function sizeValue() {
+  return 90 + sin((frameCount * 0.03) * 0.8) * 25;
+}
+
+// draw one circle
+function drawCircle(y, size, i, t) {
+  let offset = i * 0.6;
+  let motion = sin(t + offset) * 40;
+
+  fill(180, 120, 255);
+  circle(width / 2, y + motion, size);
+}
