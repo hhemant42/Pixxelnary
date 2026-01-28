@@ -1,7 +1,7 @@
 let y;
 let velocity = 0;
-let gravity = 0.8;
-let bounce = 0.7;   // energy loss
+let gravity = 0.12;
+let bounce = .9;   // energy loss
 let startY;
 
 function setup() {
@@ -9,11 +9,11 @@ function setup() {
   pixelDensity(2);
   noStroke();
 
-  startY = height * 0.25;
+  startY = height * 0.20;
   y = startY;
 }
 
-function draw() {
+function draw() { 
   background(0);
 
   let ball = ballState();
@@ -42,8 +42,8 @@ function updateBall(ball) {
     y += velocity;
 
     // bounce at ground
-    if (y > height * 0.8) {
-      y = height * 0.8;
+    if (y > height * 0.9) {
+      y = height * 0.9;
       velocity *= -bounce;
     }
   }
